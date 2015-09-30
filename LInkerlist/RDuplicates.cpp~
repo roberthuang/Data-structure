@@ -53,7 +53,7 @@ int main() {
     
     print(head);
     cout << "After Remove Duplicates: " << endl;
-    remove_duplicate_1(head);
+    remove_duplicate(head);
     print(head);
     
     
