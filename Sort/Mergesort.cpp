@@ -56,7 +56,7 @@ void Merge_Sort(Node* &head) {
     Node* a = NULL;
     Node* b = NULL;
     Node* temp = head;
-    if (head == NULL || (head -> next == NULL)) {
+    if ((head -> next == NULL)) {
         return;
     }    
     divide(temp,a,b);
@@ -64,28 +64,25 @@ void Merge_Sort(Node* &head) {
     Merge_Sort(b);
     head = merger_two_sublist(a,b);
 }
-
+//the last one node like: [5] -> null
 void divide(Node* t, Node* &a, Node* &b) {
     Node* slow = NULL;
     Node* fast = NULL;
-    if (t == NULL || t -> next == NULL) {
-        a = t;
-        b = NULL;       
-    } else {
-	    slow = t;
-	    fast = slow -> next;
-	    while (fast != NULL) {
-	        fast = fast -> next;
-	        if (fast != NULL) {
-	            fast = fast -> next;
-	            slow = slow -> next;   
-	        }
-	    
-	    }
-	    a = t;
-	    b = slow -> next;
-	    slow -> next = NULL;
-    }   
+         
+    slow = t;
+    fast = slow -> next;
+    while (fast != NULL) {
+        fast = fast -> next;
+        if (fast != NULL) {
+	    fast = fast -> next;
+	    slow = slow -> next;   
+	}
+	   
+    }
+    a = t;
+    b = slow -> next;
+    slow -> next = NULL;
+     
     /* 
     Node* a_1 = a;
     while (a_1 != NULL) {

@@ -74,6 +74,27 @@ void remove_duplicate_3(Node* &head) {
     }  
 }
 
+void remove(Node* &head) {
+    Node * cur = head;
+    while (cur -> next != NULL) {
+        Node* prev = cur;
+        Node* next_one = cur -> next;
+        while (next_one != NULL) {
+           if (next_one -> value == cur -> value) {
+                Node* temp = next_one;
+                prev -> next = next_one -> next;
+                delete temp;
+                next_one = prev -> next;                  
+            } else {
+                prev = prev -> next;
+                next_one = next_one -> next;
+            }
+        }      
+        cur =  cur -> next;  
+    }
+}
+
+
 void print(Node* &head) {
     Node* temp = head;
     while(temp != NULL) {     
@@ -82,6 +103,30 @@ void print(Node* &head) {
         temp = temp -> next; 
     }
     cout << endl;
+}
+
+void reverse(Node* &head) {
+    Node* prev = NULL;
+    Node* cur = head;    
+    while (cur != NULL) {
+        Node* n = cur -> next;    
+        cur -> next = prev;      
+        prev = cur;      
+        cur = n;    
+    } 
+    head = prev;
+}
+
+void print_2(Node* temp) {
+    while (temp != NULL) {
+        cout << temp -> value << " ";
+        temp = temp -> next;
+        if (temp == NULL) {
+           cout << "NULL";
+        }
+    }    
+    cout << endl;
+
 }
 
 int main() {
@@ -100,6 +145,9 @@ int main() {
     
     /*remove_duplicate_1(head);
     print(head);*/
-    remove_duplicate_3(head);
+    //remove(head);
+    
+    reverse(head);
     print(head);
+    print_2(head);
 }
