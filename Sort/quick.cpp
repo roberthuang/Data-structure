@@ -40,8 +40,8 @@ void quick_sort_v1(int* a, int left, int right) {
         int i = left;
         int j = right + 1;
         while(1) {
-            while (i+1 < 5 && a[++i] < pivot);
-            while (j-1 > -1 && a[--j] > pivot);
+            while (i+1 <= right && a[++i] < pivot);
+            while (j-1 >= left && a[--j] > pivot);
             if (i >= j) break;
             SWAP(a[i], a[j]);      
         }    
